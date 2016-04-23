@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">I, Android</string>
+    <string name="switch_activity">Switch</string>
+    <string name="developer">Developer?</string>
+</resources>
