@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Je, Android</string>
+    <string name="switch_activity">Modifier</string>
+    <string name="developer">Développeur?</string>
+    <string name="cancel">Annuler</string>
+    <string name="okay">D\'accord</string>
+    <string name="name">Prénom:</string>
+    <string name="id">ID:</string>
+</resources>

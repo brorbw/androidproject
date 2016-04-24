@@ -1,27 +1,29 @@
 package com.larusaarhus.assignment;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+    public final static String PREF = "com.larusaarhus.iandroid.PREF";
     public final static String NAME = "com.larusaarhus.iandroid.NAME";
     public final static String ID = "com.larusaarhus.iandroid.ID";
+    public final static String DEV = "com.larusaarhus.iandroid.DEV";
     public final static int REQUEST_IMAGE_CAPTURE = 1;
     public final static String PICTURE = "picture.jpg";
     private ImageView imageView;
@@ -29,9 +31,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("LifeCycle", "create");
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imageView);
         initPicture();
+        updateText();
     }
 
     @Override
@@ -43,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if(imageView == null){
+            imageView = (ImageView) findViewById(R.id.imageView);
+        }
+        updateText();
         Log.d("LifeCycle", "start");
     }
 
@@ -66,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchActivity(View view) {
         Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra(NAME,((TextView) findViewById(R.id.name)).getText().toString());
+        intent.putExtra(ID,((TextView) findViewById(R.id.id)).getText().toString());
+        intent.putExtra(DEV,((CheckBox) findViewById(R.id.checkBox)).isChecked());
         startActivity(intent);
     }
 
@@ -99,6 +111,34 @@ public class MainActivity extends AppCompatActivity {
         } else {
             imageView.setImageDrawable(getDrawable(R.drawable.face));
         }
+    }
+
+    private void updateText(){
+        SharedPreferences preferences = getSharedPreferences(PREF,Context.MODE_PRIVATE);
+        String name = preferences.getString(NAME,null);
+        String id = preferences.getString(ID,null);
+        boolean dev = preferences.getBoolean(DEV, false);
+        if(dev){
+            CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+            checkBox.setChecked(dev);
+        } else {
+            CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+            checkBox.setChecked(false);
+            Log.d("Prefs", "No dev definede yet");
+        }
+        if(name != null){
+            TextView textView = (TextView) findViewById(R.id.name);
+            textView.setText(name);
+        } else {
+            Log.d("Prefs", "No name definede yet");
+        }
+        if(id != null){
+            TextView textView = (TextView) findViewById(R.id.id);
+            textView.setText(id);
+        } else {
+            Log.d("Prefs", "No id definede yet");
+        }
+
     }
 
     private class SaveImage extends AsyncTask<Bitmap, Void, Void> {

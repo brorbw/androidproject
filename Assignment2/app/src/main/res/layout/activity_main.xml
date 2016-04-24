@@ -20,16 +20,27 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="switchActivity"
-        android:layout_marginBottom="33dp" />
-
-    <ImageView
+        android:layout_marginBottom="33dp"
+        android:elevation="20dp"
+        />
+    <FrameLayout
         android:layout_width="350px"
         android:layout_height="350px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="20dp"
+        android:id="@+id/frameLayout2">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:onClick="takePicture" />
+        android:onClick="takePicture"
+        android:elevation="20dp"
+        />
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,5 +72,24 @@
         android:enabled="false"
         android:checked="false"
         android:focusable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/name"
+        android:id="@+id/textView5"
+        android:layout_above="@+id/name"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/id"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
 
 </RelativeLayout>

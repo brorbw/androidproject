@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jeg, Android</string>
+    <string name="switch_activity">Rediger</string>
+    <string name="developer">Udvikler?</string>
+    <string name="cancel">Annuller</string>
+    <string name="okay">OK</string>
+    <string name="name">Navn:</string>
+    <string name="id">ID:</string>
+</resources>
