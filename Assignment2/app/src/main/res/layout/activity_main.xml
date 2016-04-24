@@ -29,15 +29,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:onClick="takePicture"
-        android:src="@drawable/face" />
+        android:onClick="takePicture" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView"
+        android:text="Donald Drumpfh"
+        android:id="@+id/name"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -45,11 +44,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="45dp" />
+        android:text="001011011111"
+        android:maxLength="12"
+        android:id="@+id/id"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
