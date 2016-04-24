@@ -15,9 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditActivity">
-
-        </activity>
+        <activity android:name=".EditActivity"/>
     </application>
     <uses-feature android:name="android.hardware.camera"
                   android:required="true" />
